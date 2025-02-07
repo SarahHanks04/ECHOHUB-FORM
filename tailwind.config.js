@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: ["class"],
+  darkMode: "class",
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
@@ -13,7 +13,6 @@ export default {
         roboto: ["Roboto", "sans-serif"],
         poppins: ["Poppins", "sans-serif"],
       },
-      themes: {},
       colors: {
         bulb: {
           blue: "#13162D",
@@ -23,6 +22,20 @@ export default {
           lightBlue: "#F7F8FB",
         },
         black: "#000000",
+        light: {
+          background: "var(--background-light)",
+          text: "var(--text-light)",
+          accent: "var(--accent-light)",
+          muted: "var(--muted-light)",
+          border: "var(--border-light)",
+        },
+        dark: {
+          background: "var(--background-dark)",
+          text: "var(--text-dark)",
+          accent: "var(--accent-dark)",
+          muted: "var(--muted-dark)",
+          border: "var(--border-dark)",
+        },
         grey: {
           50: "#EAEAEA",
           200: "#9D9D9D",
@@ -34,20 +47,20 @@ export default {
           dark: "#4A4848",
           light: "#F8F5F5",
         },
-        light: {
-          background: "#FAF4F4", // TheBulb White
-          text: "#13162D", // TheBulb Blue
-          accent: "#FDBF17", // TheBulb Yellow
-          muted: "#9D9D9D", // LightGrey 200
-          border: "#EAEAEA", // LightGrey 50
-        },
-        dark: {
-          background: "#171717", // Grey 800
-          text: "#FAF4F4", // TheBulb White
-          accent: "#FDBF17", // TheBulb Yellow
-          muted: "#707070", // DarkGrey 300
-          border: "#29292A", // LightGrey 500
-        },
+        // light: {
+        //   background: "#FAF4F4", // TheBulb White
+        //   text: "#13162D", // TheBulb Blue
+        //   accent: "#FDBF17", // TheBulb Yellow
+        //   muted: "#9D9D9D", // LightGrey 200
+        //   border: "#EAEAEA", // LightGrey 50
+        // },
+        // dark: {
+        //   background: "#171717", // Grey 800
+        //   text: "#FAF4F4", // TheBulb White
+        //   accent: "#FDBF17", // TheBulb Yellow
+        //   muted: "#707070", // DarkGrey 300
+        //   border: "#29292A", // LightGrey 500
+        // },
         shared: {
           success: "#2AAD1E", // TheBulb Success
           lightBlue: "#F7F8FB", // TheBulb Light Blue

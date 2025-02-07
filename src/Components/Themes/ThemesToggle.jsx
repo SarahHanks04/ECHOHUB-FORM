@@ -1,5 +1,5 @@
-import { Moon, Sun } from "lucide-react";
 import { useState, useEffect } from "react";
+import { Moon, Sun } from "lucide-react";
 
 const ThemeToggle = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
@@ -17,7 +17,7 @@ const ThemeToggle = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-full bg-light-accent dark:bg-bulb-blue text-light-background dark:text-bulb-white shadow-md transition-all duration-300 absolute top-4 right-4"
+      className="p-2 rounded-full bg-[var(--accent)] text-[var(--background)] shadow-md transition-all duration-300 absolute top-4 right-4"
       aria-label="Toggle Theme"
     >
       {theme === "light" ? (
