@@ -7,11 +7,13 @@ import ErrorText from "./ErrorText";
 import { motion } from "framer-motion";
 
 const FormRenderer = ({ formFields, onSubmit, isSubmitting }) => {
+  // Early return
   if (!formFields || formFields.length === 0) {
     console.error("Form fields are missing or empty:", formFields);
     return <div className="text-center text-gray-500">No fields to render</div>;
   }
 
+  // validation Schema
   const validationSchema = yup.object().shape(
     formFields.reduce((schema, field) => {
       if (!field.id) return schema;
@@ -31,6 +33,11 @@ const FormRenderer = ({ formFields, onSubmit, isSubmitting }) => {
         schema[field.id] = yup
           .string()
           .email("Please enter a valid email")
+          .required("This field is required");
+      } else if (field.type === "tel") {
+        schema[field.id] = yup
+          .string()
+          .matches(/^\+?[0-9]{7,15}$/, "Please enter a valid phone number")
           .required("This field is required");
       } else {
         schema[field.id] = field.required
@@ -79,6 +86,7 @@ const FormRenderer = ({ formFields, onSubmit, isSubmitting }) => {
                     <>
                       {field.type === "text" ||
                       field.type === "email" ||
+                      field.type === "tel" ||
                       field.type === "number" ? (
                         <input
                           type={field.type}
@@ -114,15 +122,16 @@ const FormRenderer = ({ formFields, onSubmit, isSubmitting }) => {
                           {field.options.map((option, index) => (
                             <label
                               key={index}
-                              className="flex items-center text-[17px] space-x-4 dark:text-bulb-white text-[#29292A]"
+                              className="flex items-center text-[17px] space-x-4 dark:text-bulb-white text-[#29292A] cursor-pointer"
                             >
                               <input
                                 type="radio"
                                 value={option}
                                 checked={value === option}
                                 onChange={onChange}
-                                className="h-5 w-5"
+                                className="peer hidden"
                               />
+                              <div className="w-6 h-6 rounded-full border border-bulb-blue dark:border-bulb-yellow peer-checked:border-bulb-blue peer-checked:bg-bulb-yellow transition-all" />
                               <span>{option}</span>
                             </label>
                           ))}

@@ -155,9 +155,13 @@
 
 // export default Navbar;
 
+
+
+// MY ORIGINAL NAVBAR
+
 import React, { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { User2, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
@@ -170,8 +174,8 @@ const Navbar = () => {
   useEffect(() => {
     const pathToTitle = {
       "/form/complaint/complaint": "Complaint",
-      "/form/feedback/feedback": "Event Form",
-      "/": "Feedback",
+      "/form/event/event": "Event Form",
+      "/feedback": "Feedback",
       // "/admin/complaint/complaint": "Events Feedback",
       // "/admin/feedback/feedback": "Admin",
       "/admin/event/event": "Home",
@@ -234,9 +238,9 @@ const Navbar = () => {
       {/* Desktop Links */}
       <div className="hidden md:flex items-center space-x-8 ml-auto">
         {[
-          { text: "Home", to: "/" },
+          { text: "Home", to: "/feedback" },
           { text: "Complaint", to: "/form/complaint/complaint" },
-          { text: "Event", to: "/form/feedback/feedback" },
+          { text: "Event", to: "/form/event/event" },
           {
             /* { text: "Feedback", to: "/form/feedback/feedback" }, */
           },
@@ -291,9 +295,9 @@ const Navbar = () => {
               { text: "Admin", to: "/admin/feedback/feedback" },
               { text: "Home", to: "/admin/event/event" }, */
               },
-              { text: "Home", to: "/" },
+              { text: "Home", to: "/feedback" },
               { text: "Complaint", to: "/form/complaint/complaint" },
-              { text: "Event", to: "/form/feedback/feedback" },
+              { text: "Event", to: "/form/event/event" },
             ].map(({ text, to }, index) => (
               <NavLink
                 key={index}
@@ -318,3 +322,113 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
+
+// import React, { useState, useEffect } from "react";
+// import { NavLink, useLocation } from "react-router-dom";
+// import { User2, Menu, X } from "lucide-react";
+// import { motion, AnimatePresence } from "framer-motion";
+// import { useFetchFormEvents } from "@/api/ResponseApi";
+
+// const Navbar = () => {
+//   const [isMenuOpen, setIsMenuOpen] = useState(false);
+//   const [activePage, setActivePage] = useState("Feedback Form");
+//   const location = useLocation();
+//   const { data: forms, isLoading } = useFetchFormEvents();
+
+//   useEffect(() => {
+//     const pathToTitle = {
+//       "/": "Feedback",
+//       ...(forms?.reduce((acc, form) => {
+//         acc[`/form/${form.formId}`] = form.title;
+//         return acc;
+//       }, {}) || {})
+//     };
+
+//     setActivePage(pathToTitle[location.pathname] || "Feedback Form");
+//   }, [location.pathname, forms]);
+
+//   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+//   // Framer Motion animations
+//   const mobileMenuVariants = {
+//     hidden: { opacity: 0, y: -50 },
+//     visible: {
+//       opacity: 1,
+//       y: 0,
+//       transition: { duration: 0.3, ease: "easeInOut" },
+//     },
+//     exit: {
+//       opacity: 0,
+//       y: -50,
+//       transition: { duration: 0.3, ease: "easeInOut" },
+//     },
+//   };
+
+//   // Animation for the activePage text
+//   const activePageVariants = {
+//     hidden: { opacity: 0, pathLength: 0 },
+//     visible: {
+//       opacity: 1,
+//       pathLength: 1,
+//       transition: {
+//         duration: 1,
+//         ease: "easeInOut",
+//         staggerChildren: 0.05,
+//       },
+//     },
+//   };
+
+//   const generateLinks = (forms) => {
+//     return [
+//       { text: "Home", to: "/" },
+//       ...(forms?.map((form) => ({
+//         text: form.title,
+//         to: `/form/${form.formId}`,
+//       })) || [])
+//     ];
+//   };
+
+//   return (
+//     <nav className="fixed top-0 left-0 bg-bulb-white dark:bg-[var(--background)] text-[var(--text)] py-2 px-6 md:px-16 flex justify-between items-center w-full z-50 mt-0 shadow-lg rounded-md">
+//       <motion.header
+//         className="text-2xl md:text-3xl font-bold dark:text-dark-text"
+//         initial="hidden"
+//         animate="visible"
+//         variants={activePageVariants}
+//       >
+//         {Array.from(activePage).map((char, index) => (
+//           <motion.span key={index} variants={activePageVariants}>
+//             {char === " " ? "\u00A0" : char}
+//           </motion.span>
+//         ))}
+//       </motion.header>
+
+//       {/* Desktop Links */}
+//       <div className="hidden md:flex items-center space-x-8 ml-auto">
+//         {isLoading ? (
+//           <span>Loading...</span>
+//         ) : (
+//           generateLinks(forms).map(({ text, to }, index) => (
+//             <NavLink
+//               key={index}
+//               to={to}
+//               className={({ isActive }) =>
+//                 `text-[var(--text)] hover:text-[var(--accent)] transition-colors font-medium ${
+//                   isActive ? "text-bulb-yellow font-semibold" : ""
+//                 }`
+//               }
+//             >
+//               {text}
+//             </NavLink>
+//           ))
+//         )}
+//       </div>
+
+//       {/* ... (keep the mobile menu logic) */}
+//     </nav>
+//   );
+// };
+
+// export default Navbar;

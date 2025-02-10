@@ -2,7 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
+import Modal from "react-modal";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+Modal.setAppElement("#root");
 
 const queryClient = new QueryClient();
 
