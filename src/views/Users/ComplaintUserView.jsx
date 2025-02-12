@@ -21,10 +21,11 @@ const ComplaintUserView = () => {
     firstName: "",
     lastName: "",
     contact: "",
-    emailAdress: "",
+    emailAddress: "",
   });
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [clearFields, setClearFields] = useState(false);
 
   if (isLoading) return <Spinner />;
   if (error)
@@ -51,6 +52,7 @@ const ComplaintUserView = () => {
           queryClient.invalidateQueries(["formEvents"]);
           resetForm();
           setIsModalOpen(true);
+          setClearFields(true);
         },
         onError: () => {
           toast.error("Failed to submit the form. Please try again.", {
@@ -67,7 +69,11 @@ const ComplaintUserView = () => {
       <div className="w-full">
         {/* User Information Section */}
         <div>
-          <UserInformation onUpdate={handleUserInfoUpdate} />
+          <UserInformation
+            onUpdate={handleUserInfoUpdate}
+            clearFields={clearFields}
+            onClear={() => setClearFields(false)}
+          />
         </div>
 
         {/* Complaint Form */}
