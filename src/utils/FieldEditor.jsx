@@ -10,6 +10,10 @@ const FieldEditor = ({ fields, onSave }) => {
     return maxId + 1;
   });
 
+  useEffect(() => {
+    setEditingFields(fields || []);
+  }, [fields]);
+
   const addField = () => {
     setEditingFields([
       ...editingFields,
@@ -162,11 +166,6 @@ const FieldEditor = ({ fields, onSave }) => {
 };
 
 export default FieldEditor;
-
-
-
-
-
 
 // GOOD ONE
 

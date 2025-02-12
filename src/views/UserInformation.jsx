@@ -6,7 +6,7 @@ const fieldVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.2 } },
 };
 
-const UserInformation = ({ onUpdate, clearFields }) => {
+const UserInformation = ({ onUpdate, clearFields, onClear }) => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -72,8 +72,9 @@ const UserInformation = ({ onUpdate, clearFields }) => {
       });
       setErrors({});
       setTouched({});
+      onClear(); 
     }
-  }, [clearFields]);
+  }, [clearFields, onClear]);
 
   return (
     <motion.div

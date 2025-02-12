@@ -13,6 +13,12 @@ const FormRenderer = ({ formFields, onSubmit, isSubmitting }) => {
     return <div className="text-center text-gray-500">No fields to render</div>;
   }
 
+  // / Initialize refs for each field
+  const refs = useRef([]);
+  refs.current = formFields.map(
+    (_, index) => refs.current[index] ?? React.createRef()
+  );
+
   // validation Schema
   const validationSchema = yup.object().shape(
     formFields.reduce((schema, field) => {
@@ -61,11 +67,10 @@ const FormRenderer = ({ formFields, onSubmit, isSubmitting }) => {
       className="w-full mx-auto p-8 space-y-6 bg-bulb-lightBlue dark:text-bulb-white dark:bg-bulb-blue"
     >
       {formFields.map((field, index) => {
-        const ref = useRef(null);
         return (
           <motion.div
             key={field.id}
-            ref={ref}
+            ref={refs.current[index]}
             className="w-full space-y-2"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
