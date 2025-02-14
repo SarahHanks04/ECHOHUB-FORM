@@ -82,7 +82,7 @@ const HeroForm = () => {
       setFormData({ name: "", email: "", message: "" });
       setErrors({});
       setTouched({});
-      setIsModalOpen(true); // Open the modal on successful submission
+      setIsModalOpen(true); 
       queryClient.invalidateQueries("responses");
 
       // Automatically close the modal after 3 seconds
@@ -129,7 +129,7 @@ const HeroForm = () => {
           <div className="md:w-1/2">
             <form onSubmit={handleSubmit} className="flex flex-col">
               {/* Name */}
-              <div className="mb-4">
+              <div className="mb-4 pt-2">
                 <label
                   htmlFor="name"
                   className="block text-[15px] font-medium text-[var(--text)]"
@@ -179,7 +179,7 @@ const HeroForm = () => {
               </div>
 
               {/* Message */}
-              <div className="mb-4">
+              <div className="mb-2">
                 <label
                   htmlFor="message"
                   className="block text-[15px] font-medium text-[var(--text)]"
@@ -212,7 +212,7 @@ const HeroForm = () => {
               <div className="flex justify-end">
                 <button
                   type="submit"
-                  className="bg-bulb-yellow text-[var(--background)] py-2 px-8 rounded-[10px] hover:bg-[var(--accent-dark)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-opacity-50"
+                  className="bg-bulb-yellow text-[var(--background)] py-1 px-8 rounded-[10px] hover:bg-[var(--accent-dark)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-opacity-50"
                   disabled={submitHeroForm.isLoading}
                 >
                   {submitHeroForm.isLoading ? "Submitting..." : "Submit"}
