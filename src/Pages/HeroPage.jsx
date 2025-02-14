@@ -5,7 +5,7 @@ import HeroForm from "@/components/HeroForm/HeroForm";
 
 const HeroPage = () => {
   return (
-    <section className="bg-[var(--background)] text-[var(--text)] mt-[3.2rem]">
+    <section className="bg-[var(--background)] text-[var(--text)] mt-[3rem]">
       {/* <Navbar /> */}
       <WelcomeSection />
       <HeroForm />

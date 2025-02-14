@@ -1,6 +1,11 @@
 import React from "react";
 import "./App.css";
-import { Route, BrowserRouter as Router, Routes, Navigate } from "react-router-dom";
+import {
+  Route,
+  BrowserRouter as Router,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import PageNotFound from "./pages/PageNotFound";
 import HeroPage from "./pages/HeroPage";
 import Navbar from "./components/HeroNavbar/Navbar";
