@@ -11,6 +11,7 @@ import HeroPage from "./pages/HeroPage";
 import Navbar from "./components/HeroNavbar/Navbar";
 import ComplaintUserView from "./views/Users/ComplaintUserView";
 import EventFeedbackUserView from "./views/Users/EventFeedbackUserView";
+import GenericFormView from "./utils/GenericFormView";
 
 function App() {
   return (
@@ -24,13 +25,8 @@ function App() {
         {/* User Routes */}
         <Route path="form/complaint/:formId" element={<ComplaintUserView />} />
         <Route path="form/event/:formId" element={<EventFeedbackUserView />} />
+        <Route path="form/:formType/:formId" element={<GenericFormView />} />
         <Route path="*" element={<PageNotFound />} />
-        {/* Admin Routes */}
-        {/* <Route path="/admin/feedback/:formId" element={<AdminFeedbackView />} /> */}
-        {/* <Route
-          path="/admin/complaint/:formId"
-          element={<AdminComplaintView />}
-        /> */}
       </Routes>
     </Router>
   );
