@@ -25,9 +25,10 @@ const GenericFormView = () => {
           setIsModalOpen(true);
           reset();
 
+          // Automatically close the modal after 5 seconds
           setTimeout(() => {
             setIsModalOpen(false);
-          }, 3000);
+          }, 5000);
         },
         onError: (error) => {
           console.error("Submission failed:", error);
@@ -47,7 +48,7 @@ const GenericFormView = () => {
 
   return (
     <div className="py-12 px-4">
-      {/* <h1>{form.formType}</h1> */}
+      {/* Render the form */}
       <FormRenderer
         formFields={form.fields}
         onSubmit={handleSubmit}

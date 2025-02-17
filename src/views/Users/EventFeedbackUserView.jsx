@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Modal from "react-modal";
 import { useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import { useFetchFormById, useSubmitResponse } from "@/api/ResponseApi";
@@ -54,6 +53,11 @@ const EventFeedbackUserView = () => {
           resetForm();
           setIsModalOpen(true);
           setClearFields(true);
+
+          // Automatically close the modal after 5 seconds
+          setTimeout(() => {
+            setIsModalOpen(false);
+          }, 5000);
         },
         onError: () => {
           toast.error("Failed to submit the form. Please try again.", {
@@ -86,23 +90,22 @@ const EventFeedbackUserView = () => {
           />
         </div>
 
-        {/* React Modal */}
-        <Modal
-          isOpen={isModalOpen}
-          onRequestClose={() => setIsModalOpen(false)}
-          className="bg-white rounded-xl p-6 w-[90%] max-w-sm shadow-lg relative mx-auto mt-[10%]"
-          overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
-        >
-          <button
-            className="absolute top-2 right-2 py-2 mb-6 text-gray-500 hover:text-black focus:outline-none"
-            onClick={() => setIsModalOpen(false)}
-          >
-            <X size={24} />
-          </button>
-          <p className="text-center py-4 text-gray-700">
-            Your response has been submitted successfully!
-          </p>
-        </Modal>
+        {/* Success Modal */}
+        {isModalOpen && (
+          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+            <div className="bg-white rounded-xl p-6 w-[90%] max-w-lg shadow-lg relative">
+              <button
+                className="absolute top-0 right-4 py-3 mb-6 text-gray-500 hover:text-black focus:outline-none"
+                onClick={() => setIsModalOpen(false)}
+              >
+                <X size={24} />
+              </button>
+              <p className="text-center py-4 text-gray-700">
+                Your response has been submitted successfully.
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

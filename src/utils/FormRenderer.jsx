@@ -13,13 +13,13 @@ const FormRenderer = ({ formFields, onSubmit, isSubmitting }) => {
     return <div className="text-center text-gray-500">No fields to render</div>;
   }
 
-  // / Initialize refs for each field
+  // Initialize refs for each field
   const refs = useRef([]);
   refs.current = formFields.map(
     (_, index) => refs.current[index] ?? React.createRef()
   );
 
-  // validation Schema
+  // Validation Schema
   const validationSchema = yup.object().shape(
     formFields.reduce((schema, field) => {
       if (!field.id) return schema;
@@ -99,12 +99,12 @@ const FormRenderer = ({ formFields, onSubmit, isSubmitting }) => {
                           onChange={onChange}
                           onBlur={onBlur}
                           placeholder={field.placeholder}
-                          className={`w-full px-3 py-3 border rounded-[10px] focus:outline-none transition-all ${
+                          className={`w-full px-3 py-3 border border-gray-300 rounded-[10px] focus:outline-none focus:border-b-[3.5px] focus:border-bulb-yellow focus:border-t-0 focus:border-l-0 focus:border-r-0 hover:border-b-[3.5px] hover:border-bulb-yellow hover:border-t-0 hover:border-l-0 hover:border-r-0 transition-all ${
                             errors[field.id]
                               ? "border-red-500"
                               : touchedFields[field.id] && !errors[field.id]
                               ? "border-green-500"
-                              : "border-gray-300"
+                              : ""
                           }`}
                         />
                       ) : field.type === "textarea" ? (
@@ -113,12 +113,12 @@ const FormRenderer = ({ formFields, onSubmit, isSubmitting }) => {
                           onChange={onChange}
                           onBlur={onBlur}
                           placeholder={field.placeholder}
-                          className={`w-full px-3 py-2 border rounded-[10px] focus:outline-none transition-all ${
+                          className={`w-full px-3 py-2 border border-gray-300 rounded-[10px] focus:outline-none focus:border-b-[3.5px] focus:border-bulb-yellow focus:border-t-0 focus:border-l-0 focus:border-r-0 hover:border-b-[3.5px] hover:border-bulb-yellow hover:border-t-0 hover:border-l-0 hover:border-r-0 transition-all ${
                             errors[field.id]
                               ? "border-red-500"
                               : touchedFields[field.id] && !errors[field.id]
                               ? "border-green-500"
-                              : "border-gray-300"
+                              : ""
                           }`}
                           rows={4}
                         />
@@ -170,7 +170,7 @@ const FormRenderer = ({ formFields, onSubmit, isSubmitting }) => {
                         <select
                           value={value || ""}
                           onChange={onChange}
-                          className="w-full px-4 py-4 text-[#29292A] rounded-[10px] border focus:outline-none"
+                          className="w-full px-4 py-4 text-[#29292A] rounded-[10px] border border-gray-300 focus:outline-none focus:border-b-[3.5px] focus:border-bulb-yellow focus:border-t-0 focus:border-l-0 focus:border-r-0 hover:border-b-[3.5px] hover:border-bulb-yellow hover:border-t-0 hover:border-l-0 hover:border-r-0"
                         >
                           <option
                             className="dark:text-bulb-white text-[17px]"
@@ -226,9 +226,7 @@ const FormRenderer = ({ formFields, onSubmit, isSubmitting }) => {
       <motion.button
         type="submit"
         disabled={isSubmitting}
-        className="w-full mx-auto block bg-bulb-yellow text-bulb-blue 
-             dark:bg-bulb-success dark:text-bulb-white text-[20px] font-normal py-2 px-6 
-             rounded-[10px] transition duration-200 disabled:bg-gray-400"
+        className="w-full mx-auto block bg-bulb-yellow text-bulb-blue dark:text-bulb-blue text-[20px] font-normal py-2 px-6 rounded-[10px] transition duration-200 disabled:bg-gray-400"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
