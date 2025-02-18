@@ -55,10 +55,10 @@ const UserInformation = ({ onUpdate, clearFields, onClear }) => {
   // Determine border color based on validation state
   const getBorderColor = (field) => {
     if (touched[field]) {
-      if (errors[field]) return "border-red-500";
-      if (formData[field].trim()) return "border-green-500";
+      if (errors[field]) return "border-b-2 border-red-500";
+      if (formData[field].trim()) return "border-b-2 border-green-500";
     }
-    return "border-gray-600";
+    return "";
   };
 
   // Clear input fields when form is submitted
@@ -72,7 +72,7 @@ const UserInformation = ({ onUpdate, clearFields, onClear }) => {
       });
       setErrors({});
       setTouched({});
-      onClear(); 
+      onClear();
     }
   }, [clearFields, onClear]);
 
@@ -91,7 +91,7 @@ const UserInformation = ({ onUpdate, clearFields, onClear }) => {
           </label>
           <input
             type="text"
-            className={`border rounded-[10px] p-2 w-full focus:outline-none text-black ${getBorderColor(
+            className={`border border-gray-600 rounded-[10px] p-2 w-full focus:outline-none focus:border-b-[3.5px] focus:border-bulb-yellow focus:border-t-0 focus:border-l-0 focus:border-r-0 hover:border-b-[3.5px] hover:border-bulb-yellow hover:border-t-0 hover:border-l-0 hover:border-r-0 text-black ${getBorderColor(
               "firstName"
             )}`}
             value={formData.firstName}
@@ -110,7 +110,7 @@ const UserInformation = ({ onUpdate, clearFields, onClear }) => {
           </label>
           <input
             type="text"
-            className={`border rounded-[10px] p-2 w-full focus:outline-none text-black ${getBorderColor(
+            className={`border border-gray-600 rounded-[10px] p-2 w-full focus:outline-none focus:border-b-[3.5px] focus:border-bulb-yellow focus:border-t-0 focus:border-l-0 focus:border-r-0 hover:border-b-[3.5px] hover:border-bulb-yellow hover:border-t-0 hover:border-l-0 hover:border-r-0 text-black ${getBorderColor(
               "lastName"
             )}`}
             value={formData.lastName}
@@ -129,7 +129,7 @@ const UserInformation = ({ onUpdate, clearFields, onClear }) => {
           </label>
           <input
             type="text"
-            className={`border rounded-[10px] p-2 w-full focus:outline-none text-black ${getBorderColor(
+            className={`border border-gray-600 rounded-[10px] p-2 w-full focus:outline-none focus:border-b-[3.5px] focus:border-bulb-yellow focus:border-t-0 focus:border-l-0 focus:border-r-0 hover:border-b-[3.5px] hover:border-bulb-yellow hover:border-t-0 hover:border-l-0 hover:border-r-0 text-black ${getBorderColor(
               "contact"
             )}`}
             value={formData.contact}
@@ -148,7 +148,7 @@ const UserInformation = ({ onUpdate, clearFields, onClear }) => {
           </label>
           <input
             type="email"
-            className={`border rounded-[10px] p-2 w-full focus:outline-none text-black ${getBorderColor(
+            className={`border border-gray-600 rounded-[10px] p-2 w-full focus:outline-none focus:border-b-[3.5px] focus:border-bulb-yellow focus:border-t-0 focus:border-l-0 focus:border-r-0 hover:border-b-[3.5px] hover:border-bulb-yellow hover:border-t-0 hover:border-l-0 hover:border-r-0 text-black ${getBorderColor(
               "emailAddress"
             )}`}
             value={formData.emailAddress}

@@ -184,10 +184,10 @@ const Navbar = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <nav className="fixed top-0 left-0 bg-bulb-white dark:bg-[var(--background)] text-[var(--text)] py-2 px-6 md:px-16 flex justify-between items-center w-full z-50 mt-0 shadow-lg rounded-md">
+    <nav className="fixed top-0 left-0 bg-bulb-white dark:bg-bulb-white text-bulb-blue py-2 px-6 md:px-16 flex justify-between items-center w-full z-50 mt-0 shadow-lg rounded-md">
       {/* Dynamic Header */}
       <motion.header
-        className="text-2xl md:text-3xl font-bold dark:text-dark-text"
+        className="text-2xl md:text-3xl font-bold dark:text-bulb-blue"
         initial="hidden"
         animate="visible"
       >
@@ -200,12 +200,12 @@ const Navbar = () => {
         <NavLink
           to="/feedback"
           className={({ isActive }) =>
-            `text-[var(--text)] hover:text-[var(--accent)] transition-colors font-medium ${
-              isActive ? "text-bulb-yellow font-semibold" : ""
+            `text-[var(--text)] hover:text-[var(--accent)]  transition-colors font-medium ${
+              isActive ? "text-bulb-yellow font-semibold" : "text-bulb-blue"
             }`
           }
         >
-          Home
+          Feedback
         </NavLink>
 
         {/* Complaint Link */}
@@ -213,7 +213,7 @@ const Navbar = () => {
           to="/form/complaint/complaint"
           className={({ isActive }) =>
             `text-[var(--text)] hover:text-[var(--accent)] transition-colors font-medium ${
-              isActive ? "text-bulb-yellow font-semibold" : ""
+              isActive ? "text-bulb-yellow font-semibold" : "text-bulb-blue"
             }`
           }
         >
@@ -225,7 +225,7 @@ const Navbar = () => {
           to="/form/event/event"
           className={({ isActive }) =>
             `text-[var(--text)] hover:text-[var(--accent)] transition-colors font-medium ${
-              isActive ? "text-bulb-yellow font-semibold" : ""
+              isActive ? "text-bulb-yellow font-semibold" : "text-bulb-blue"
             }`
           }
         >
@@ -236,7 +236,7 @@ const Navbar = () => {
         <div className="relative">
           <button
             onClick={() => setIsFormsDropdownOpen(!isFormsDropdownOpen)}
-            className="flex items-center space-x-2 text-[var(--text)] hover:text-[var(--accent)] transition-colors font-medium"
+            className="flex items-center space-x-2 text-[var(--text)] dark:text-bulb-blue hover:text-[var(--accent)] transition-colors font-medium"
           >
             {/* <span>Forms</span> */}
             <ChevronDown size={16} />
@@ -287,16 +287,16 @@ const Navbar = () => {
             {/* Home Link */}
             <NavLink
               to="/feedback"
-              className="block py-2 text-[var(--text)] hover:text-[var(--accent)] transition-colors font-medium"
+              className="block py-2 text-[var(--background)] hover:text-[var(--accent)] transition-colors font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
-              Home
+              Feedback
             </NavLink>
 
             {/* Complaint Link */}
             <NavLink
               to="/form/complaint/complaint"
-              className="block py-2 text-[var(--text)] hover:text-[var(--accent)] transition-colors font-medium"
+              className="block py-2 text-[var(--background)] hover:text-[var(--accent)] transition-colors font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
               Complaint
@@ -305,7 +305,7 @@ const Navbar = () => {
             {/* Event Link */}
             <NavLink
               to="/form/event/event"
-              className="block py-2 text-[var(--text)] hover:text-[var(--accent)] transition-colors font-medium"
+              className="block py-2 text-[var(--background)] hover:text-[var(--accent)] transition-colors font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
               Event
@@ -315,7 +315,7 @@ const Navbar = () => {
             <div className="relative">
               <button
                 onClick={() => setIsFormsDropdownOpen(!isFormsDropdownOpen)}
-                className="flex items-center space-x-2 text-[var(--text)] hover:text-[var(--accent)] transition-colors font-medium"
+                className="flex items-center space-x-2 text-[var(--background)] hover:text-[var(--accent)] transition-colors font-medium"
               >
                 {/* <span>Forms</span> */}
                 <ChevronDown size={16} />

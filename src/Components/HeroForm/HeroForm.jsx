@@ -54,10 +54,10 @@ const HeroForm = () => {
   // Determine border color based on validation state
   const getBorderColor = (field) => {
     if (touched[field]) {
-      if (errors[field]) return "border-red-500";
-      if (formData[field].trim()) return "border-green-500";
+      if (errors[field]) return "border-b-2 border-red-500";
+      if (formData[field].trim()) return "border-b-2 border-green-500";
     }
-    return "border-gray-600";
+    return "";
   };
 
   const submitHeroForm = useMutation({
@@ -82,13 +82,13 @@ const HeroForm = () => {
       setFormData({ name: "", email: "", message: "" });
       setErrors({});
       setTouched({});
-      setIsModalOpen(true); 
+      setIsModalOpen(true);
       queryClient.invalidateQueries("responses");
 
-      // Automatically close the modal after 3 seconds
+      // Automatically close the modal after 5 seconds
       setTimeout(() => {
         setIsModalOpen(false);
-      }, 3000);
+      }, 5000);
     },
     onError: () => {
       alert(
@@ -143,7 +143,7 @@ const HeroForm = () => {
                   value={formData.name}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  className={`mt-1 block w-full border rounded-[8px] shadow-sm py-2 px-3 focus:outline-none ${getBorderColor(
+                  className={`mt-1 block w-full border border-gray-600 rounded-[8px] py-2 px-3 focus:outline-none focus:border-b-[3.4px] focus:border-bulb-yellow focus:border-t-0 focus:border-l-0 focus:border-r-0 hover:border-b-[3.4px] hover:border-bulb-yellow hover:border-t-0 hover:border-l-0 hover:border-r-0 ${getBorderColor(
                     "name"
                   )}`}
                   required
@@ -168,7 +168,7 @@ const HeroForm = () => {
                   value={formData.email}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  className={`mt-1 block w-full border rounded-[8px] shadow-sm py-2 px-3 focus:outline-none ${getBorderColor(
+                  className={`mt-1 block w-full border border-gray-600 rounded-[8px] py-2 px-3 focus:outline-none focus:border-b-[3.4px] focus:border-bulb-yellow focus:border-t-0 focus:border-l-0 focus:border-r-0 hover:border-b-[3.4px] hover:border-bulb-yellow hover:border-t-0 hover:border-l-0 hover:border-r-0 ${getBorderColor(
                     "email"
                   )}`}
                   required
@@ -192,7 +192,7 @@ const HeroForm = () => {
                   value={formData.message}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  className={`mt-1 block w-full border rounded-[8px] shadow-sm py-2 px-3 focus:outline-none ${getBorderColor(
+                  className={`mt-1 block w-full border border-gray-600 rounded-[8px] py-2 px-3 focus:outline-none focus:border-b-[3.4px] focus:border-bulb-yellow focus:border-t-0 focus:border-l-0 focus:border-r-0 hover:border-b-[3.4px] hover:border-bulb-yellow hover:border-t-0 hover:border-l-0 hover:border-r-0 ${getBorderColor(
                     "message"
                   )}`}
                   rows={3}
